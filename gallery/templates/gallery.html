@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Buttons */
+        .filter-btns {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-btns button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Gallery Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .card img:hover {
+            transform: scale(1.1);
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+        }
+
+        p {
+            font-size: 14px;
+            color: gray;
+        }
+        @media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar div {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    /* Profile image */
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        width: 90% !important;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        margin: 10px;
+    }
+}
+    </style>
+</head>
+
+
+<body>
+
+<h1>My Art Gallery 🎨</h1>
+
+<!-- Filter Buttons -->
+<div class="filter-btns">
+    <button onclick="filterSelection('all')">All</button>
+
+    {% for cat in categories %}
+        <button onclick="filterSelection('{{ cat }}')">{{ cat }}</button>
+    {% endfor %}
+</div>
+
+<form method="GET" style="text-align:center; margin:20px;">
+    
+    <!-- 🔍 Search -->
+    <input type="text" name="q" placeholder="Search artwork..."
+    style="padding:10px; width:200px; border-radius:10px; border:none;">
+
+    <!-- 🎨 Category Filter -->
+    <select name="category" style="padding:10px; border-radius:10px;">
+        <option value="">All Categories</option>
+        
+        {% for cat in categories %}
+            <option value="{{ cat }}">{{ cat }}</option>
+        {% endfor %}
+        
+    </select>
+
+    <button type="submit" 
+    style="padding:10px 20px; border:none; border-radius:10px; background:#ff4da6; color:white;">
+        Apply
+    </button>
+</form>
+
+<!-- Gallery -->
+<div class="grid">
+    {% for art in artworks %}
+    <div class="card" data-category="{{ art.category }}">
+        <img src="{{art.image.url}}" onclick="openimage(this.src)">
+        <h3>{{ art.title }}</h3>
+        <p>{{ art.description }}</p>
+        
+
+    <!-- ❤️ LIKE BUTTON -->
+    <button onclick="likeArt(this)">❤️ Like</button>
+    <p class="like-count">0 Likes</p>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- JS Filter -->
+<script>
+function filterSelection(category) {
+    let cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+<div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center;">
+    <span onclick="closeImage()" style="position:absolute; top:20px; right:30px; color:white; font-size:30px; cursor:pointer;">&times;</span>
+    <img id="popup-img" style="max-width:90%; max-height:90%;">
+</div>
+
+<script>
+function openImage(src) {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popup-img").src = src;
+}
+
+function closeImage() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+<script>
+function likeArt(btn) {
+    let countText = btn.nextElementSibling;
+    let count = parseInt(countText.innerText);
+
+    count++;
+    countText.innerText = count + " Likes";
+}
+</script>
+
+</body>
+</html>

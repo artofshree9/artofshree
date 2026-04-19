@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Achievements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #0f0f0f;
+            color: white;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar div {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    /* Profile image */
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        width: 90% !important;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        margin: 10px;
+    }
+}@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar div {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    /* Profile image */
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        width: 90% !important;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        margin: 10px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<h1>🏆 My Achievements</h1>
+
+<div class="grid">
+{% for item in data %}
+    <div class="card">
+        <a href="{{item.image.url}}" target="_blank">
+        <img src="{{ item.image.url }}" class="'zoom-img">
+        </a>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+    </div>
+{% endfor %}
+</div>
+
+</body>
+</html>

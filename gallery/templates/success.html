@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Successful</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f0f0f;
+            color: white;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: #111;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* Main Box */
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .box {
+            background: #1a1a1a;
+            display: inline-block;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 77, 166, 0.2);
+        }
+
+        h1 {
+            color: #ff4da6;
+        }
+
+        p {
+            color: #ccc;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            background: #ff4da6;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #ff1a8c;
+        }
+        @media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar div {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    /* Profile image */
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        width: 90% !important;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        margin: 10px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h2>ArtOfShree</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/commission/">Commission</a>
+        <a href="/contact/">Contact</a>
+    </div>
+</div>
+
+<!-- Success Message -->
+<div class="container">
+    <div class="box">
+        <h1>✅ Order Submitted!</h1>
+        <p>Your commission request has been received successfully 💫</p>
+        <p>I will contact you soon regarding pricing and details.</p>
+
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>

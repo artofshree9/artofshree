@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Commission</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f0f0f;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #111;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff4da6;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff1a8c;
+}
+
+.social-btns {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-btns a {
+    margin: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.whatsapp { background: green; }
+.instagram { background: #ff4da6; }
+
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar div {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    /* Profile image */
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        width: 90% !important;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        margin: 10px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>ArtOfShree</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/commission/">Commission</a>
+        <a href="/contact/">Contact</a>
+    </div>
+</div>
+
+<div class="container">
+<h1>🎨 Commission Form</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="text" name="first_name" placeholder="First Name" required>
+    <input type="text" name="last_name" placeholder="Last Name" required>
+    <input type="text" name="phone" placeholder="Contact Number" required>
+    <input type="email" name="email" placeholder="Email ID" required>
+
+    <select name="art_type" required>
+        <option value="">Select Artwork Type</option>
+        <option>Pencil Sketch</option>
+        <option>Portrait</option>
+        <option>Customized Painting</option>
+        <option>Customized Gifts</option>
+        <option>Wall Painting</option>
+        <option>Handmade Sculpture</option>
+        <option>Henna Art</option>
+    </select>
+
+    <input type="text" name="size" placeholder="Artwork Size (e.g. A4, A3)" required>
+
+    <textarea name="details" placeholder="Describe your requirement..." required></textarea>
+    <label>Refrence image:</label>
+    <input type="file" name="reference_image">
+    <button type="submit">Submit Order</button>
+</form>
+
+<div class="social-btns">
+    <p>Discuss price directly 👇</p>
+
+    <a href="https://wa.me/919907649819" class="whatsapp" target="_blank">
+        WhatsApp
+    </a>
+
+    <a href="https://instagram.com/artofshree9" class="instagram" target="_blank">
+        Instagram
+    </a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f0f0f;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: #111;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .form-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, textarea, select {
+            width: 250px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #ff4da6;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar div {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    /* Profile image */
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        width: 90% !important;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        margin: 10px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h2>ArtOfShree</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/testimonials/">Reviews</a>
+    </div>
+</div>
+
+<div class="form-container">
+    <h2>✨ Share Your Experience</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Your Name" required><br>
+
+        <textarea name="message" placeholder="Your Feedback" required></textarea><br>
+
+        <select name="rating">
+            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4">⭐⭐⭐⭐ Good</option>
+            <option value="3">⭐⭐⭐ Average</option>
+            <option value="2">⭐⭐ Poor</option>
+            <option value="1">⭐ Very Bad</option>
+        </select><br>
+
+        <button type="submit">Submit Review</button>
+    </form>
+</div>
+
+<footer>
+    <p>© 2026 ArtOfShree | Thank you for your feedback 💖</p>
+</footer>
+
+</body>
+</html>

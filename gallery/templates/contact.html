@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background:black; color:white; text-align:center;">
+
+<p>Have a question, idea, or just want to connect?
+Feel free to reach out — I’d love to hear from you.
+Whether it’s about my artwork, collaborations, or general inquiries, I’m always open to conversations.
+</p>
+
+<div class="contact-box">
+
+    <h2>📞 Contact Me</h2>
+
+    <p>For collaborations, commissions or any queries 👇</p>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919907649819?text=Hi%20I%20want%20to%20connect%20with%20you" target="_blank">
+        <button>💬 Chat on WhatsApp</button>
+    </a>
+    <p>👉 Click here to connect with me on WhatsApp</p>
+
+
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/artofshree9" target="_blank">
+        <button>📸 Visit Instagram</button>
+    </a>
+    <p>👉 Click here to explore my artworks and connect on Instagram</p>
+
+
+    <form method="POST" style="text-align:center; margin-top:50px;">
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Your Name" required
+    style="padding:10px; margin:10px; width:250px;"><br>
+
+    <input type="email" name="email" placeholder="Your Email" required
+    style="padding:10px; margin:10px; width:250px;"><br>
+
+    <textarea name="message" placeholder="Your Message" required
+    style="padding:10px; margin:10px; width:250px; height:100px;"></textarea><br>
+
+    <button type="submit"
+    style="padding:10px 20px; background:#ff4da6; color:white; border:none; border-radius:10px;">
+        Send Message
+    </button>
+</form>
+
+</div>
+
+</body>
+</html>

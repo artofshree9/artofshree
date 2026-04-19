@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Reviews</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f0f0f;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: #111;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .rating {
+            color: gold;
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #ff4da6;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+        }
+        @media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar div {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    /* Profile image */
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        width: 90% !important;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        margin: 10px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h2>ArtOfShree</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/commission/">Commission</a>
+        <a href="/contact/">Contact</a>
+    </div>
+</div>
+
+<h2>💬 Client Reviews</h2>
+
+<a href="/add-review/" class="btn">➕ Add Your Review</a>
+
+<div class="reviews">
+{% for review in data %}
+    <div class="card">
+        <h3>{{ review.name }}</h3>
+        <p>{{ review.message }}</p>
+
+        <div class="rating">
+            {% for i in "12345" %}
+                {% if forloop.counter <= review.rating %}
+                    ⭐
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <small style="color:gray;">
+            {{ review.created_at|date:"d M Y" }}
+        </small>
+    </div>
+{% empty %}
+    <p style="text-align:center;">No reviews yet 😢</p>
+{% endfor %}
+</div>
+
+<footer>
+    <p>© 2026 ArtOfShree | @artofshree9</p>
+</footer>
+
+</body>
+</html>
